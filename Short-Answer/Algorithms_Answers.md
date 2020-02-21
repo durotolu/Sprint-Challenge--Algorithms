@@ -28,3 +28,5 @@ repeat until consecutive floors with opposite outcomes.
 f = higher of the 2 consecutive floors
 
 method similar to binary search
+
+runtime = O(logn)
