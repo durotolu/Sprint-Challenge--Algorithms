@@ -97,7 +97,32 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        c = self.swap_item
+        print('c', l)
+        a = self.move_right()
+        print(a)
+        b = self.compare_item()
+        print(b)
+
+        sorted = False
+        while sorted == False:
+            sorted = True
+            for i in range(0, len(l) - 1):
+                if l[i] > l[i + 1]:
+                    sorted = False
+                    l[i], l[i + 1] = l[i + 1], l[i]
+
+        return l
+
+        # sorted = False
+        # while sorted == False:
+        #     sorted = True
+        #     for i in range(0, len(arr) - 1):
+        #         if arr[i] > arr[i + 1]:
+        #             sorted = False
+        #             arr[i], arr[i + 1] = arr[i + 1], arr[i]
+
+        # return arr
 
 
 if __name__ == "__main__":
