@@ -97,32 +97,26 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        c = self.swap_item
-        print('c', l)
-        a = self.move_right()
-        print(a)
-        b = self.compare_item()
-        print(b)
-
-        sorted = False
-        while sorted == False:
-            sorted = True
-            for i in range(0, len(l) - 1):
-                if l[i] > l[i + 1]:
-                    sorted = False
-                    l[i], l[i + 1] = l[i + 1], l[i]
-
-        return l
-
-        # sorted = False
-        # while sorted == False:
-        #     sorted = True
-        #     for i in range(0, len(arr) - 1):
-        #         if arr[i] > arr[i + 1]:
-        #             sorted = False
-        #             arr[i], arr[i + 1] = arr[i + 1], arr[i]
-
-        # return arr
+        # base case check
+        if not self.can_move_right() and not self.set_light_on():
+            return
+        else:
+            self.set_light_on()
+            self.swap_item()
+            # Returns True if the robot can move right or False if it's at the end of the list.
+            while self.can_move_right():
+                # continue moving to the right until the list ends
+                self.move_right()
+                self.compare_item()
+                # If the held item's value is greater than item in list swap item.
+                if self.compare_item() == 1:
+                    self.swap_item()
+            while self.compare_item() is not None:
+                self.set_light_off()
+                self.move_left()
+            self.swap_item()
+            self.move_right()
+            return self.sort()
 
 
 if __name__ == "__main__":
